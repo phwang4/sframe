@@ -1,6 +1,3 @@
-//Get worker url
-const url = new URL(import.meta.url).pathname.replace("Client","Worker");
-
 /**
  * SFrame library
  *  @namespace Sframe
@@ -55,7 +52,7 @@ class Client extends EventTarget
 		 super();
 		 
 		//Create new worker
-		this.worker = new Worker(url, {type: "module"});
+		this.worker = new Worker(new URL(import.meta.url).pathname.replace("Client","Worker"), {type: "module"});
 		
 		//Cutrent transactions
 		this.transId = 1;
